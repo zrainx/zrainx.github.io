@@ -61,6 +61,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-在XCode中使用OpenCV" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/14/在XCode中使用OpenCV/" class="article-date">
+  <time datetime="2015-09-14T11:38:35.000Z" itemprop="datePublished">2015-09-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/14/在XCode中使用OpenCV/">在XCode中使用OpenCV</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>创建一个空的command line工程。</li>
+<li>写opencv代码</li>
+<li>添加lib文件：右键点击工程名，选择“Add files to..”，在文件选择对话框弹出来时输入“/”，在弹出的路径框中输入：/usr/local/lib，全选该文件夹下的全部dylib文件，添加至工程。</li>
+<li>添加lib文件查找支持: 点击工程名文件，进入“Build Settings”选项卡，在“Library Search Paths”栏中输入“/usr/local/lib”</li>
+<li>添加头文件：点击工程名文件，进入“Build Settings”选项卡，在“Header Search Paths”栏中输入：“/usr/local/include   /usr/local/include/opencv”</li>
+</ol>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Search Paths </span><br><span class="line"></span><br><span class="line">Header Search Paths</span><br><span class="line"><span class="regexp">/usr/</span>local/include</span><br><span class="line"></span><br><span class="line">Library Search Paths  </span><br><span class="line"> <span class="regexp">/usr/</span>local/lib</span><br><span class="line"> <span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>opencv<span class="regexp">/2.4.11_1/</span>lib</span><br><span class="line"></span><br><span class="line"> opencv2\core\</span><br><span class="line"></span><br><span class="line">Build Phases </span><br><span class="line">  Link Binary With Libraries</span><br><span class="line">    <span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>opencv<span class="regexp">/2.4.11_1/</span>lib</span><br></pre></td></tr></table></figure>
+<ol>
+<li>编译运行整个工程，运行成功~~</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="ciejv507v000b0aaojl8pokna" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-正手弧圈-手腕外展" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/09/13/正手弧圈-手腕外展/" class="article-date">
@@ -97,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="cieim2ar30006ss8ekkgk9uzi" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="ciejv507s00060aaoc23mjy4h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/乒乓球/">乒乓球</a></li></ul>
@@ -141,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/芯芯/" data-id="cieim2aqx0001ss8e93777qgc" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/芯芯/" data-id="ciejv507n00010aaos8whunw4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/女儿/">女儿</a></li></ul>
@@ -211,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/使用hxo和github搭建blog步骤/" data-id="cieim2ar5000bss8eiqfo990i" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/使用hxo和github搭建blog步骤/" data-id="ciejv507x000g0aao7t02u4wv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hxo/">hxo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建blog/">搭建blog</a></li></ul>
@@ -258,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/hello-world/" data-id="cieim2aqp0000ss8e0vqf9kxr" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/hello-world/" data-id="ciejv507900000aao3xgum5r6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,7 +335,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hxo/">hxo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乒乓球/">乒乓球</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/女儿/">女儿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建blog/">搭建blog</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hxo/">hxo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcode/">xcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乒乓球/">乒乓球</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/女儿/">女儿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建blog/">搭建blog</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -295,7 +344,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hxo/" style="font-size: 10px;">hxo</a> <a href="/tags/乒乓球/" style="font-size: 10px;">乒乓球</a> <a href="/tags/女儿/" style="font-size: 10px;">女儿</a> <a href="/tags/搭建blog/" style="font-size: 10px;">搭建blog</a>
+      <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hxo/" style="font-size: 10px;">hxo</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/乒乓球/" style="font-size: 10px;">乒乓球</a> <a href="/tags/女儿/" style="font-size: 10px;">女儿</a> <a href="/tags/搭建blog/" style="font-size: 10px;">搭建blog</a>
     </div>
   </div>
 
@@ -304,7 +353,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -314,6 +363,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/09/14/在XCode中使用OpenCV/">在XCode中使用OpenCV</a>
+          </li>
         
           <li>
             <a href="/2015/09/13/正手弧圈-手腕外展/">正手弧圈-手腕外展</a>
