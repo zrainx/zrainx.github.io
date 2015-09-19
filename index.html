@@ -61,6 +61,111 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-使用Xcode7免费真机调试iOS应用程序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" class="article-date">
+  <time datetime="2015-09-19T14:58:19.000Z" itemprop="datePublished">2015-09-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ios/">ios</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/19/使用Xcode7免费真机调试iOS应用程序/">使用Xcode7免费真机调试iOS应用程序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在给我的mbp升级xcode 在说明中看到这样一段文字：</p>
+<p><em>Now everyone can <strong>run and test their own app on a device—for free</strong>. You can run and debug your own creations on a Mac, iPhone, iPad, iPod touch, or Apple Watch without any fees, and no programs to join. All you need to do is enter your free Apple ID into Xcode. You can even use the same Apple ID you already use for the App Store or iTunes. Once you’ve perfected your app the Apple Developer Program can help you get it on the App Store.</em></p>
+<p>这是真的么？百度了一下，是真的。太好了，这下可以剩下99美刀了。<br>马上试了一下，步骤如下:</p>
+<p>1.运行Xcode后，点击菜单中的Preferences…进入Accounts标签<br>2.左边栏选自己的Apple ID， 右边可以看到 </p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>iOS</th>
+<th>MAC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xxx</td>
+<td>free</td>
+<td>free</td>
+</tr>
+</tbody>
+</table>
+<p>3.按下右边栏中右下角的<em>View Details…</em>按钮<br>4.在Details对话框中可以看到:</p>
+<table>
+<thead>
+<tr>
+<th>Signing Identities</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> iOS Development</td>
+<td>Create</td>
+</tr>
+<tr>
+<td>iOS Distribution</td>
+<td><del>Create</del></td>
+</tr>
+<tr>
+<td> Mac Development</td>
+<td>Create</td>
+</tr>
+<tr>
+<td> Mac App Distribution</td>
+<td><del>Create</del></td>
+</tr>
+<tr>
+<td> Mac Installer Distribution</td>
+<td><del>Create</del></td>
+</tr>
+<tr>
+<td> Developer ID Application</td>
+<td><del>Create</del></td>
+</tr>
+<tr>
+<td> Developer ID Installer</td>
+<td><del>Create</del></td>
+</tr>
+</tbody>
+</table>
+<p> <em><del>Create</del></em>表示灰色，不能选择。</p>
+<p> 4.点击<br> iOS Development和Mac Development栏对应的Create钮。然后这两个<br> Create钮就消失了。接着点击右下角的<em>Done</em>按钮。</p>
+<p> 5.随便打开一个iOS工程。usb连上老婆的iphone6 。</p>
+<p> 6.Xcode 上的iOS Devce下拉菜单中多出了iphone6，太棒了。</p>
+<p> 7.选择 iphone6 然后猛击运行。由于第一次调试需要添加Provisioning Profile，xcode弹出一个Issue消息，点击的Issue旁点Fix，一切就都由Xcode搞定了，最终会生成对应App  ID的描述文件，这时编译链接项目，运行调试就可以了。</p>
+<p> 8.发现iphone6中竟然多出了那个APP。断开usb线也可以在iphone上运行，就和其他APP<br> 一样。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" data-id="cier90mtr000rg08ejj0kcult" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-在XCode中使用OpenCV" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/09/14/在XCode中使用OpenCV/" class="article-date">
@@ -102,7 +207,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="ciejv85sy000b0raozgekp5j0" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="cier90mtl000bg08ek97ij4un" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
@@ -150,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="ciejv85sw00060raomozs6e0x" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="cier90mtj0006g08e6lozam7h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/乒乓球/">乒乓球</a></li></ul>
@@ -194,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/芯芯/" data-id="ciejv85sq00010raobgh0hjpk" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/芯芯/" data-id="cier90mtd0001g08eivcemiq6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/女儿/">女儿</a></li></ul>
@@ -264,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/使用hxo和github搭建blog步骤/" data-id="ciejv85t1000i0rao1enf5zfc" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/使用hxo和github搭建blog步骤/" data-id="cier90mtn000ig08eor1rck09" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hxo/">hxo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建blog/">搭建blog</a></li></ul>
@@ -311,7 +416,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/hello-world/" data-id="ciejv85sc00000raob1to7j5w" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/hello-world/" data-id="cier90msw0000g08exgrvohyw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -330,7 +435,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/乒乓球/">乒乓球</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日志/">日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/照片/">照片</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ios/">ios</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/乒乓球/">乒乓球</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日志/">日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/照片/">照片</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -357,7 +462,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -367,6 +472,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/09/19/使用Xcode7免费真机调试iOS应用程序/">使用Xcode7免费真机调试iOS应用程序</a>
+          </li>
         
           <li>
             <a href="/2015/09/14/在XCode中使用OpenCV/">在XCode中使用OpenCV</a>
@@ -382,10 +491,6 @@
         
           <li>
             <a href="/2015/09/05/使用hxo和github搭建blog步骤/">使用hxo和github搭建blog步骤</a>
-          </li>
-        
-          <li>
-            <a href="/2015/09/05/hello-world/">Hello World</a>
           </li>
         
       </ul>

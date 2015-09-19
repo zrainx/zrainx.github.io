@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/9 | Zrainx&#39;s blog</title>
+  <title>使用Xcode7免费真机调试iOS应用程序 | Zrainx&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zrainx's blog">
-<meta property="og:url" content="http://zrainx.github.io/archives/2015/09/index.html">
+  <meta name="description" content="今天在给我的mbp升级xcode 在说明中看到这样一段文字：
+Now everyone can run and test their own app on a device—for free. You can run and debug your own creations on a Mac, iPhone, iPad, iPod touch, or Apple Watch without any">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Xcode7免费真机调试iOS应用程序">
+<meta property="og:url" content="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/index.html">
 <meta property="og:site_name" content="Zrainx's blog">
-<meta property="og:description">
+<meta property="og:description" content="今天在给我的mbp升级xcode 在说明中看到这样一段文字：
+Now everyone can run and test their own app on a device—for free. You can run and debug your own creations on a Mac, iPhone, iPad, iPod touch, or Apple Watch without any">
+<meta property="og:updated_time" content="2015-09-19T15:47:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zrainx's blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="使用Xcode7免费真机调试iOS应用程序">
+<meta name="twitter:description" content="今天在给我的mbp升级xcode 在说明中看到这样一段文字：
+Now everyone can run and test their own app on a device—for free. You can run and debug your own creations on a Mac, iPhone, iPad, iPod touch, or Apple Watch without any">
   
     <link rel="alternative" href="/atom.xml" title="Zrainx&#39;s blog" type="application/atom+xml">
   
@@ -59,134 +63,121 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" class="archive-article-date">
-  <time datetime="2015-09-19T14:58:19.000Z" itemprop="datePublished">9月 19</time>
+        <section id="main"><article id="post-使用Xcode7免费真机调试iOS应用程序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" class="article-date">
+  <time datetime="2015-09-19T14:58:19.000Z" itemprop="datePublished">2015-09-19</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ios/">ios</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/19/使用Xcode7免费真机调试iOS应用程序/">使用Xcode7免费真机调试iOS应用程序</a>
+    <h1 class="article-title" itemprop="name">
+      使用Xcode7免费真机调试iOS应用程序
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/09/14/在XCode中使用OpenCV/" class="archive-article-date">
-  <time datetime="2015-09-14T11:38:35.000Z" itemprop="datePublished">9月 14</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/14/在XCode中使用OpenCV/">在XCode中使用OpenCV</a>
-    </h1>
-  
+        <p>今天在给我的mbp升级xcode 在说明中看到这样一段文字：</p>
+<p><em>Now everyone can <strong>run and test their own app on a device—for free</strong>. You can run and debug your own creations on a Mac, iPhone, iPad, iPod touch, or Apple Watch without any fees, and no programs to join. All you need to do is enter your free Apple ID into Xcode. You can even use the same Apple ID you already use for the App Store or iTunes. Once you’ve perfected your app the Apple Developer Program can help you get it on the App Store.</em></p>
+<p>这是真的么？百度了一下，是真的。太好了，这下可以剩下99美刀了。<br>马上试了一下，步骤如下:</p>
+<p>1.运行Xcode后，点击菜单中的Preferences…进入Accounts标签<br>2.左边栏选自己的Apple ID， 右边可以看到 </p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>iOS</th>
+<th>MAC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xxx</td>
+<td>free</td>
+<td>free</td>
+</tr>
+</tbody>
+</table>
+<p>3.按下右边栏中右下角的<em>View Details…</em>按钮<br>4.在Details对话框中可以看到:</p>
+<table>
+<thead>
+<tr>
+<th>Signing Identities</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> iOS Development</td>
+<td>Create</td>
+</tr>
+<tr>
+<td>iOS Distribution</td>
+<td><del>Create</del></td>
+</tr>
+<tr>
+<td> Mac Development</td>
+<td>Create</td>
+</tr>
+<tr>
+<td> Mac App Distribution</td>
+<td><del>Create</del></td>
+</tr>
+<tr>
+<td> Mac Installer Distribution</td>
+<td><del>Create</del></td>
+</tr>
+<tr>
+<td> Developer ID Application</td>
+<td><del>Create</del></td>
+</tr>
+<tr>
+<td> Developer ID Installer</td>
+<td><del>Create</del></td>
+</tr>
+</tbody>
+</table>
+<p> <em><del>Create</del></em>表示灰色，不能选择。</p>
+<p> 4.点击<br> iOS Development和Mac Development栏对应的Create钮。然后这两个<br> Create钮就消失了。接着点击右下角的<em>Done</em>按钮。</p>
+<p> 5.随便打开一个iOS工程。usb连上老婆的iphone6 。</p>
+<p> 6.Xcode 上的iOS Devce下拉菜单中多出了iphone6，太棒了。</p>
+<p> 7.选择 iphone6 然后猛击运行。由于第一次调试需要添加Provisioning Profile，xcode弹出一个Issue消息，点击的Issue旁点Fix，一切就都由Xcode搞定了，最终会生成对应App  ID的描述文件，这时编译链接项目，运行调试就可以了。</p>
+<p> 8.发现iphone6中竟然多出了那个APP。断开usb线也可以在iphone上运行，就和其他APP<br> 一样。</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/09/13/正手弧圈-手腕外展/" class="archive-article-date">
-  <time datetime="2015-09-13T14:04:27.000Z" itemprop="datePublished">9月 13</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/13/正手弧圈-手腕外展/">正手弧圈-手腕外展</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/09/05/芯芯/" class="archive-article-date">
-  <time datetime="2015-09-05T10:17:53.000Z" itemprop="datePublished">9月 5</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" data-id="cier90mtr000rg08ejj0kcult" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/05/芯芯/">芯芯</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/09/05/使用hxo和github搭建blog步骤/" class="archive-article-date">
-  <time datetime="2015-09-05T07:52:23.000Z" itemprop="datePublished">9月 5</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/05/使用hxo和github搭建blog步骤/">使用hxo和github搭建blog步骤</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/09/05/hello-world/" class="archive-article-date">
-  <time datetime="2015-09-05T07:32:21.000Z" itemprop="datePublished">9月 5</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/05/hello-world/">Hello World</a>
-    </h1>
   
+    <a href="/2015/09/14/在XCode中使用OpenCV/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在XCode中使用OpenCV</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-  
-    </div></section>
-  
+
 </section>
         
           <aside id="sidebar">
