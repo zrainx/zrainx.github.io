@@ -30,7 +30,7 @@ Xcode
 在xcode创建新工程  
 菜单栏：File -&amp;gt; new -&amp;gt; Pro">
 <meta property="og:image" content="http://zrainx.github.io/img/1.png">
-<meta property="og:updated_time" content="2015-10-03T01:12:21.000Z">
+<meta property="og:updated_time" content="2015-10-03T07:37:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Instant OpenCV for iOS》 学习笔记（1）">
 <meta name="twitter:description" content="从iOS开始本文简要介绍设置iOS开发环境以及运行一个“Hello World”程序。
@@ -133,41 +133,15 @@ Xcode
 </li>
 <li>编译ViewController.m</li>
 </ol>
-<pre><code><span class="preprocessor">#import <span class="title">"ViewController.h"</span></span>
-
-<span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span>
-
-<span class="keyword">@end</span>
-
-<span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span>
-
-- (<span class="keyword">void</span>)viewDidLoad {
-    [<span class="keyword">super</span> viewDidLoad];
-    <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span>
-    <span class="built_in">NSLog</span>(<span class="string">@"Hello World!"</span>);
-
-    [[[<span class="built_in">UIAlertView</span> alloc]
-      initWithTitle:<span class="string">@"喂，这里!"</span>
-      message:<span class="string">@"欢迎来到Opencv开发社区!"</span>
-      delegate:<span class="literal">nil</span> cancelButtonTitle:<span class="string">@"继续"</span>
-      otherButtonTitles:<span class="literal">nil</span>, <span class="literal">nil</span>]
-      show];
-}
-
-- (<span class="keyword">void</span>)didReceiveMemoryWarning {
-    [<span class="keyword">super</span> didReceiveMemoryWarning];
-    <span class="comment">// Dispose of any resources that can be recreated.</span>
-}
-
-<span class="keyword">@end</span>
-</code></pre><ol>
-<li>编译运行<br><img src="img/1.png" alt="结果"></li>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"ViewController.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Hello World!"</span>);</span><br><span class="line">    </span><br><span class="line">    [[[<span class="built_in">UIAlertView</span> alloc]</span><br><span class="line">      initWithTitle:<span class="string">@"喂，这里!"</span></span><br><span class="line">      message:<span class="string">@"欢迎来到Opencv开发社区!"</span></span><br><span class="line">      delegate:<span class="literal">nil</span> cancelButtonTitle:<span class="string">@"继续"</span></span><br><span class="line">      otherButtonTitles:<span class="literal">nil</span>, <span class="literal">nil</span>]</span><br><span class="line">      show];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)didReceiveMemoryWarning &#123;</span><br><span class="line">    [<span class="keyword">super</span> didReceiveMemoryWarning];</span><br><span class="line">    <span class="comment">// Dispose of any resources that can be recreated.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>编译运行<br>在emulator上看到结果<br><img src="img/1.png" alt="1.png"></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/" data-id="cifadxh790014t6ao67otuj11" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/" data-id="cifavduok0019lbaom6llt3s1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
@@ -177,6 +151,15 @@ Xcode
   
     
 <nav id="article-nav">
+  
+    <a href="/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          《Instant OpenCV for iOS》 学习笔记(2)
+        
+      </div>
+    </a>
   
   
     <a href="/2015/09/20/在macos上搭建pyqt环境/" id="article-nav-older" class="article-nav-link-wrap">
@@ -206,7 +189,7 @@ Xcode
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV/">OpenCV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hxo/">hxo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcode/">xcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乒乓球/">乒乓球</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/女儿/">女儿</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建blog/">搭建blog</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV/">OpenCV</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hxo/">hxo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcode/">xcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乒乓球/">乒乓球</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/女儿/">女儿</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建blog/">搭建blog</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -215,7 +198,7 @@ Xcode
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hxo/" style="font-size: 10px;">hxo</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/xcode/" style="font-size: 20px;">xcode</a> <a href="/tags/乒乓球/" style="font-size: 10px;">乒乓球</a> <a href="/tags/女儿/" style="font-size: 20px;">女儿</a> <a href="/tags/搭建blog/" style="font-size: 10px;">搭建blog</a>
+      <a href="/tags/OpenCV/" style="font-size: 20px;">OpenCV</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hxo/" style="font-size: 10px;">hxo</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/xcode/" style="font-size: 20px;">xcode</a> <a href="/tags/乒乓球/" style="font-size: 10px;">乒乓球</a> <a href="/tags/女儿/" style="font-size: 20px;">女儿</a> <a href="/tags/搭建blog/" style="font-size: 10px;">搭建blog</a>
     </div>
   </div>
 
@@ -224,7 +207,7 @@ Xcode
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -234,6 +217,10 @@ Xcode
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/">《Instant OpenCV for iOS》 学习笔记(2)</a>
+          </li>
         
           <li>
             <a href="/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/">《Instant OpenCV for iOS》 学习笔记（1）</a>
@@ -249,10 +236,6 @@ Xcode
         
           <li>
             <a href="/2015/09/19/使用Xcode7免费真机调试iOS应用程序/">使用Xcode7免费真机调试iOS应用程序</a>
-          </li>
-        
-          <li>
-            <a href="/2015/09/14/在XCode中使用OpenCV/">在XCode中使用OpenCV</a>
           </li>
         
       </ul>
