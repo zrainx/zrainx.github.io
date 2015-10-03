@@ -67,6 +67,10 @@
   <time datetime="2015-10-03T01:41:00.000Z" itemprop="datePublished">2015-10-03</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/opencv/">opencv</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -85,7 +89,7 @@
       
         <h2 id="从资源目录（resources）显示图像">从资源目录（resources）显示图像</h2><p>ios应用程序在resources目录存放图像文件。本文我们学习如何添加图像文件到资源文件夹，如何加载图像文件到UIImage对象并显示。我们将会用到UIImageView组件。</p>
 <h3 id="准备">准备</h3><ul>
-<li>准备一张照片文件 <a href="http://lenna.org" target="_blank" rel="external">http://lenna.org</a> 这张叫做lenna的照片在各种图像处理教科书中被使用到，简直可以说是图像处理里的hello word御用照片了。从这个网站可以了解到这张照片到来历:)。</li>
+<li>准备一张照片文件 <a href="http://lenna.org" target="_blank" rel="external">http://lenna.org</a> 这张叫做lenna的照片在各种图像处理教科书中被使用到，简直可以说是图像处理里的hello word御用照片了。从这个网站可以了解到这张照片的来历:)。</li>
 </ul>
 <h3 id="步骤">步骤</h3><ul>
 <li><p>新建一个工程具体步骤详见<a href="http://zrainx.github.io/2015/10/03/%E3%80%8AInstant%20OpenCV%20for%20iOS%E3%80%8B%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\(1\">《Instant OpenCV for iOS》 学习笔记(1)</a>)或者直接在原来的工程上继续开发（我选择后者）。</p>
@@ -109,13 +113,13 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"ViewController.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"><span class="keyword">@synthesize</span> imageView;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></span><br><span class="line">    image = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"lena_std.tif"</span>];</span><br><span class="line">    <span class="keyword">if</span> (image!=<span class="literal">nil</span>) &#123;</span><br><span class="line">        imageView<span class="variable">.image</span>=image;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)didReceiveMemoryWarning &#123;</span><br><span class="line">    [<span class="keyword">super</span> didReceiveMemoryWarning];</span><br><span class="line">    <span class="comment">// Dispose of any resources that can be recreated.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>最后 command ＋ r 编译运行</li>
-<li>结果 <img src="img/2015-10-03-05.jpg" alt="2015-10-03-05.jpg"></li>
+<li>在仿真器上的运行结果 <img src="img/2015-10-03-05.jpg" alt="2015-10-03-05.jpg"></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" data-id="cifavrwnb0014m1aogqu8vy5c" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" data-id="cifaw8lf50014nbao5ckxgbm8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -180,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/" data-id="cifavrwne0017m1ao0cljnwyq" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/" data-id="cifaw8lfb0018nbao44f3o1cz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -226,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/20/在macos上搭建pyqt环境/" data-id="cifavrwmv000em1ao78vrdfm1" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/20/在macos上搭建pyqt环境/" data-id="cifaw8lem000enbaod1yyfkb1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/20/芯芯视频/" data-id="cifavrwmk0001m1ao8syjynug" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/20/芯芯视频/" data-id="cifaw8leb0001nbaob426my77" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/女儿/">女儿</a></li></ul>
@@ -376,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" data-id="cifavrwn7000ym1aoy7qava2p" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" data-id="cifaw8lf1000ynbaovnzze4o9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
@@ -429,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="cifavrwn1000im1aouii06vmq" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="cifaw8les000inbaoreqspfiu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
@@ -477,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="cifavrwms0009m1aodixopyhn" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="cifaw8lej0009nbaoda7xke1p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/乒乓球/">乒乓球</a></li></ul>
@@ -523,7 +527,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/芯芯照片/" data-id="cifavrwmq0006m1aoes0oabw9" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/芯芯照片/" data-id="cifaw8leh0006nbaoz0sbl4e8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/女儿/">女儿</a></li></ul>
@@ -593,7 +597,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/使用hxo和github搭建blog步骤/" data-id="cifavrwn4000pm1ao68rp61co" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/使用hxo和github搭建blog步骤/" data-id="cifaw8lew000pnbaoxtro234q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hxo/">hxo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建blog/">搭建blog</a></li></ul>
@@ -640,7 +644,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/hello-world/" data-id="cifavrwm60000m1ao6m5wwnqg" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/hello-world/" data-id="cifaw8ldx0000nbao3pck3zxs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -659,7 +663,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ios/">ios</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/乒乓球/">乒乓球</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日志/">日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/照片/">照片</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ios/">ios</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/乒乓球/">乒乓球</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日志/">日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/照片/">照片</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
