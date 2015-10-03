@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://zrainx.github.io/img/2015-10-03-03.jpg">
 <meta property="og:image" content="http://zrainx.github.io/img/2015-10-03-04.jpg">
 <meta property="og:image" content="http://zrainx.github.io/img/2015-10-03-05.jpg">
-<meta property="og:updated_time" content="2015-10-03T14:29:32.000Z">
+<meta property="og:updated_time" content="2015-10-03T14:32:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Instant OpenCV for iOS》 学习笔记(2)">
 <meta name="twitter:description" content="从资源目录（resources）显示图像ios应用程序在resources目录存放图像文件。本文我们学习如何添加图像文件到资源文件夹，如何加载图像文件到UIImage对象并显示。我们将会用到UIImageView组件。
@@ -123,7 +123,7 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"ViewController.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"><span class="keyword">@synthesize</span> imageView;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></span><br><span class="line">    image = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"lena_std.tif"</span>];</span><br><span class="line">    <span class="keyword">if</span> (image!=<span class="literal">nil</span>) &#123;</span><br><span class="line">        imageView<span class="variable">.image</span>=image;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)didReceiveMemoryWarning &#123;</span><br><span class="line">    [<span class="keyword">super</span> didReceiveMemoryWarning];</span><br><span class="line">    <span class="comment">// Dispose of any resources that can be recreated.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>最后 command ＋ r 编译运行</li>
-<li>在仿真器上的运行结果 <img src="http://zrainx.github.io/img/2015-10-03-05.jpg" alt="2015-10-03-05.jpg"></li>
+<li>在仿真器上的运行结果<br><img src="http://zrainx.github.io/img/2015-10-03-05.jpg" alt="2015-10-03-05.jpg"></li>
 </ul>
 <h2 id="注释">注释</h2><ul>
 <li>iOS 的GUI开发使用MVC设计模式。这种模式把应用程序分成界面部分（View）、模型（算法）部分（Model）、控制器（用户交互）部分（Controller）。一些简单的程序只需要View 和 Controller 就可以了，因为逻辑比较简单，无需专门分个Model部分出来。</li>
@@ -137,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" data-id="cifb6eqr800146kaoy0fz05sc" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" data-id="cifb6hw8p001475aoqmbltrlw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
