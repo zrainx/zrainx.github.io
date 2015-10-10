@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>《Instant OpenCV for iOS》 学习笔记(3) | Zrainx&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="连接OpenCV到iOS项目中本文学习在项目中添加OpenCV库的设置方法和调用OpenCV库函数的方法。学习UIImage和cv::Mat之间相互转换。
+准备下载ios版本的 opencv库文件 opencv2.framework本例中使用3.0。解压。
+步骤
+继续使用学习笔记（2）的工程。将解压所得的framework拖入项目侧边栏中
+在ViewController.h中加入头文件 
+ 123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Instant OpenCV for iOS》 学习笔记(3)">
+<meta property="og:url" content="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/index.html">
+<meta property="og:site_name" content="Zrainx's blog">
+<meta property="og:description" content="连接OpenCV到iOS项目中本文学习在项目中添加OpenCV库的设置方法和调用OpenCV库函数的方法。学习UIImage和cv::Mat之间相互转换。
+准备下载ios版本的 opencv库文件 opencv2.framework本例中使用3.0。解压。
+步骤
+继续使用学习笔记（2）的工程。将解压所得的framework拖入项目侧边栏中
+在ViewController.h中加入头文件 
+ 123">
+<meta property="og:image" content="http://zrainx.github.io/img/2015-10-03-03.jpg">
+<meta property="og:image" content="http://zrainx.github.io/img/2015-10-10-8.58.07.jpg">
+<meta property="og:updated_time" content="2015-10-10T14:27:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《Instant OpenCV for iOS》 学习笔记(3)">
+<meta name="twitter:description" content="连接OpenCV到iOS项目中本文学习在项目中添加OpenCV库的设置方法和调用OpenCV库函数的方法。学习UIImage和cv::Mat之间相互转换。
+准备下载ios版本的 opencv库文件 opencv2.framework本例中使用3.0。解压。
+步骤
+继续使用学习笔记（2）的工程。将解压所得的framework拖入项目侧边栏中
+在ViewController.h中加入头文件 
+ 123">
+  
+    <link rel="alternative" href="/atom.xml" title="Zrainx&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Zrainx&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zrainx.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-《Instant-OpenCV-for-iOS》-学习笔记-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/" class="article-date">
+  <time datetime="2015-10-03T14:59:17.000Z" itemprop="datePublished">2015-10-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/opencv/">opencv</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《Instant OpenCV for iOS》 学习笔记(3)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="连接OpenCV到iOS项目中">连接OpenCV到iOS项目中</h2><p>本文学习在项目中添加OpenCV库的设置方法和调用OpenCV库函数的方法。<br>学习UIImage和cv::Mat之间相互转换。</p>
+<h3 id="准备">准备</h3><p>下载ios版本的 opencv库文件 <a href="http://opencv.org" target="_blank" rel="external">opencv2.framework</a>本例中使用3.0。解压。</p>
+<h3 id="步骤">步骤</h3><ol>
+<li>继续使用学习笔记（2）的工程。将解压所得的framework拖入项目侧边栏中<br><img src="http://zrainx.github.io/img/2015-10-03-03.jpg" alt="2015-10-03-03.jpg"></li>
+<li><p>在ViewController.h中加入头文件 </p>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	<span class="id">#import</span> &lt;opencv2/opencv.hpp&gt; 	</span><br><span class="line">	<span class="id">#import</span> &lt;opencv2/imgcodecs/ios.h&gt;</span><br><span class="line">	``` 	</span><br><span class="line">ViewController<span class="class">.h</span>	的最终代码如下：</span><br></pre></td></tr></table></figure>
+<p> #import <uikit uikit.h=""><br> #import <opencv2 opencv.hpp=""><br> #import <opencv2 imgcodecs="" ios.h=""></opencv2></opencv2></uikit></p>
+<p> using namespace cv;</p>
+<p> @interface ViewController : UIViewController{<br> UIImage* image;<br> Mat cvImage;<br> }</p>
+<p> @property (weak, nonatomic) IBOutlet UIImageView *imageView;</p>
+<p> @end</p>
+ <figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3. 修改<span class="keyword">*</span>ViewController.m<span class="keyword">*</span>文件名为<span class="keyword">*</span>ViewController.mm<span class="keyword">*</span> ，<span class="keyword">*</span>\<span class="keyword">*</span>.mm<span class="keyword">*</span>表示object c++ 文件。因为opencv是用c++写的。</span><br><span class="line">4. 	编辑ViewController.mm中的viewDidLoad()方法。</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>(void)viewDidLoad {<br>[super viewDidLoad];<br>// Do any additional setup after loading the view, typically from a nib.<br>image = [UIImage imageNamed:@”lena_std.tif”];<br>if (image!=nil) {<br>  //转换image中的UIImage * 格式图像到Mat格式，结果存到cvImage中<br>  UIImageToMat(image, cvImage);<br>}</p>
+<p>if (!cvImage.empty()) {<br>  Mat cvGrayImage;<br>  //转换cvImage中的图像到单通道灰度图像，结果存到cvGrayImage中<br>  cvtColor(cvImage, cvGrayImage, COLOR_BGR2GRAY);<br>  //高斯模糊去除cvGrayImage中微小的边缘，结果存到cvGrayImage中<br>  GaussianBlur(cvGrayImage, cvGrayImage, cv::Size(5,5), 1.2, 1.2);<br>  //Canny算法得到cvGrayImage中图像的边缘，结果存到cvGrayImage中<br>  Canny(cvGrayImage, cvGrayImage, 0, 50);<br>  //设置cvImage中图像的所有像素为灰度色<br>  cvImage.setTo(Scalar::all(255));<br>  //设置cvImage中图像的边缘部分像素为蓝色<br>  cvImage.setTo(Scalar(0,128,255,255),cvGrayImage);<br>  //转换cvImage中的Mat格式图像到UIImage* 格式并且在imageView组件显示<br>  imageView.image=MatToUIImage(cvImage);<br>}<br>}<br>```</p>
+</li>
+</ul>
+</li>
+<li>运行程序查看效果。<br><img src="http://zrainx.github.io/img/2015-10-10-8.58.07.jpg" alt="2015-10-10-8.58.07.jpg"></li>
+</ol>
+<h3 id="解释">解释</h3><ol>
+<li>framework 简化了处理依赖关系的过程。framework封装了头文件和bin文件，这些文件的依赖关系由xcode处理，我们无须手动处理include 路径。我们也不需要手动处理不同架构（比如armv7，armv7s和x86），xcode会根据不同的编译配置自动寻找合适的库。</li>
+<li>通常ios应用程序用Objective-C语言，头文件是 *.h ， 源代码文件 *.m。Objective-C语言是C语言的超集，所以可以在Objective-C文件中加入C语言。同理，Objective-C++文件中可以加入C++。OpenCv是用C++写的，所以需要使用Objective-C++。Objective-C++文件的后缀名是 *.mm</li>
+<li>加入<code>using namespace cv;</code>声明使用opencv的命名域空间。这样可以在后续调用opencv方法时显得简化一些。例如cv::Mat 只要写成 Mat就好了。</li>
+<li>在viewDidLoad()中，我们调用<em>UImageToMat</em>方法转换UIImage对象到<em>cv::Mat</em>对象。但请不要频繁调用这个方法，这样做会消耗内存影响程序性能。<em>UImageToMat</em>和<em>MatToUIImage</em>方法在头文件<opencv2 imgcodecs="" ios.h="">中定义。</opencv2></li>
+<li>在转换完成图像后，使用opencv做了一些简单的图像处理。首先是转换cvImage中的图像到单通道灰度图像。然后使用高斯模糊去除cvGrayImage中微小的边缘；接着使用Canny算法检测cvGrayImage中图像的边缘。为了显示效果，创建了一幅白色背景，边缘像素设置为蓝色的图像。最后调用<em>MatToUIImage</em>将<em>cv::Mat</em>对象转回UIImage并在屏幕上显示。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/" data-id="cifl6f0ps0014cv8er7cm85xd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">《Instant OpenCV for iOS》 学习笔记(2)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ios/">ios</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/乒乓球/">乒乓球</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日志/">日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/照片/">照片</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hxo/">hxo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcode/">xcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乒乓球/">乒乓球</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/女儿/">女儿</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建blog/">搭建blog</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hxo/" style="font-size: 10px;">hxo</a> <a href="/tags/ios/" style="font-size: 20px;">ios</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/xcode/" style="font-size: 15px;">xcode</a> <a href="/tags/乒乓球/" style="font-size: 10px;">乒乓球</a> <a href="/tags/女儿/" style="font-size: 15px;">女儿</a> <a href="/tags/搭建blog/" style="font-size: 10px;">搭建blog</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/">《Instant OpenCV for iOS》 学习笔记(3)</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/">《Instant OpenCV for iOS》 学习笔记(2)</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/">《Instant OpenCV for iOS》 学习笔记（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2015/09/20/在macos上搭建pyqt环境/">在macos上搭建pyqt环境</a>
+          </li>
+        
+          <li>
+            <a href="/2015/09/20/芯芯视频/">芯芯</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 zrainx<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
