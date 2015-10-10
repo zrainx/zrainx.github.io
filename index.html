@@ -92,13 +92,13 @@
 <h3 id="步骤">步骤</h3><ol>
 <li>继续使用学习笔记（2）的工程。将解压所得的framework拖入项目侧边栏中<br><img src="http://zrainx.github.io/img/2015-10-03-03.jpg" alt="2015-10-03-03.jpg"></li>
 <li><p>在ViewController.h中加入头文件 </p>
- <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	<span class="id">#import</span> &lt;opencv2/opencv.hpp&gt; 	</span><br><span class="line">	<span class="id">#import</span> &lt;opencv2/imgcodecs/ios.h&gt;</span><br><span class="line">	``` 	</span><br><span class="line">ViewController<span class="class">.h</span>	的最终代码如下：</span><br></pre></td></tr></table></figure>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#import</span> &lt;opencv2/opencv.hpp&gt; 	</span><br><span class="line"><span class="id">#import</span> &lt;opencv2/imgcodecs/ios.h&gt;</span><br><span class="line">``` 	</span><br><span class="line"></span><br><span class="line">ViewController<span class="class">.h</span>	的最终代码如下：</span><br></pre></td></tr></table></figure>
 <p> #import <uikit uikit.h=""><br> #import <opencv2 opencv.hpp=""><br> #import <opencv2 imgcodecs="" ios.h=""></opencv2></opencv2></uikit></p>
 <p> using namespace cv;</p>
 <p> @interface ViewController : UIViewController{<br> UIImage* image;<br> Mat cvImage;<br> }</p>
 <p> @property (weak, nonatomic) IBOutlet UIImageView *imageView;</p>
 <p> @end</p>
- <figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3. 修改<span class="keyword">*</span>ViewController.m<span class="keyword">*</span>文件名为<span class="keyword">*</span>ViewController.mm<span class="keyword">*</span> ，<span class="keyword">*</span>\<span class="keyword">*</span>.mm<span class="keyword">*</span>表示object c++ 文件。因为opencv是用c++写的。</span><br><span class="line">4. 	编辑ViewController.mm中的viewDidLoad()方法。</span><br></pre></td></tr></table></figure>
+ <figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">3. 修改<span class="keyword">*</span>ViewController.m<span class="keyword">*</span>文件名为<span class="keyword">*</span>ViewController.mm<span class="keyword">*</span> ，<span class="keyword">*</span>\<span class="keyword">*</span>.mm<span class="keyword">*</span>表示object c++ 文件。因为opencv是用c++写的。</span><br><span class="line">4. 	编辑ViewController.mm中的viewDidLoad()方法。</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>(void)viewDidLoad {<br>[super viewDidLoad];<br>// Do any additional setup after loading the view, typically from a nib.<br>image = [UIImage imageNamed:@”lena_std.tif”];<br>if (image!=nil) {<br>  //转换image中的UIImage * 格式图像到Mat格式，结果存到cvImage中<br>  UIImageToMat(image, cvImage);<br>}</p>
 <p>if (!cvImage.empty()) {<br>  Mat cvGrayImage;<br>  //转换cvImage中的图像到单通道灰度图像，结果存到cvGrayImage中<br>  cvtColor(cvImage, cvGrayImage, COLOR_BGR2GRAY);<br>  //高斯模糊去除cvGrayImage中微小的边缘，结果存到cvGrayImage中<br>  GaussianBlur(cvGrayImage, cvGrayImage, cv::Size(5,5), 1.2, 1.2);<br>  //Canny算法得到cvGrayImage中图像的边缘，结果存到cvGrayImage中<br>  Canny(cvGrayImage, cvGrayImage, 0, 50);<br>  //设置cvImage中图像的所有像素为灰度色<br>  cvImage.setTo(Scalar::all(255));<br>  //设置cvImage中图像的边缘部分像素为蓝色<br>  cvImage.setTo(Scalar(0,128,255,255),cvGrayImage);<br>  //转换cvImage中的Mat格式图像到UIImage* 格式并且在imageView组件显示<br>  imageView.image=MatToUIImage(cvImage);<br>}<br>}<br>```</p>
@@ -118,7 +118,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/" data-id="cifl6f0ps0014cv8er7cm85xd" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/" data-id="cifl6j0600014dl8eophmefkg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -196,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" data-id="cifl6f0px0018cv8epg3xixii" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" data-id="cifl6j0650018dl8esvdtwged" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -261,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/" data-id="cifl6f0q0001ccv8e5hz8ifp9" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/" data-id="cifl6j068001cdl8ey2b8ha2n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -307,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/20/在macos上搭建pyqt环境/" data-id="cifl6f0pc000ecv8e1f0naym4" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/20/在macos上搭建pyqt环境/" data-id="cifl6j05j000edl8ewga785ei" class="article-share-link">Share</a>
       
       
     </footer>
@@ -349,7 +349,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/20/芯芯视频/" data-id="cifl6f0p10001cv8e877a2lkq" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/20/芯芯视频/" data-id="cifl6j0590001dl8e4fefgb6q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/女儿/">女儿</a></li></ul>
@@ -457,7 +457,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" data-id="cifl6f0po000ycv8e4o1e8k39" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" data-id="cifl6j05v000ydl8eu6l3idv6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
@@ -510,7 +510,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="cifl6f0ph000icv8e796189uh" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="cifl6j05p000idl8ejb5jcfwi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
@@ -558,7 +558,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="cifl6f0pa0009cv8eka7wq52t" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="cifl6j05h0009dl8e711wvykd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/乒乓球/">乒乓球</a></li></ul>
@@ -604,7 +604,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/芯芯照片/" data-id="cifl6f0p60006cv8etj5m4173" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/芯芯照片/" data-id="cifl6j05e0006dl8eaviz6rqv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/女儿/">女儿</a></li></ul>
@@ -674,7 +674,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/使用hxo和github搭建blog步骤/" data-id="cifl6f0pk000pcv8etjis8rj6" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/使用hxo和github搭建blog步骤/" data-id="cifl6j05s000pdl8e79up1akm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hxo/">hxo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建blog/">搭建blog</a></li></ul>
