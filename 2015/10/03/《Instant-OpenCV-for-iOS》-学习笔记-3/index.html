@@ -21,7 +21,7 @@
 在ViewController.h中加入opencv头文件">
 <meta property="og:image" content="http://zrainx.github.io/img/2015-10-09-10.40.58.jpg">
 <meta property="og:image" content="http://zrainx.github.io/img/2015-10-10-8.58.07.jpg">
-<meta property="og:updated_time" content="2015-10-10T14:44:13.000Z">
+<meta property="og:updated_time" content="2015-10-10T15:26:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Instant OpenCV for iOS》 学习笔记(3)">
 <meta name="twitter:description" content="连接OpenCV到iOS项目中本文学习在项目中添加OpenCV库的设置方法和调用OpenCV库函数的方法。学习UIImage和cv::Mat之间相互转换。
@@ -122,12 +122,14 @@
 <li>加入<code>using namespace cv;</code>声明使用opencv的命名域空间。这样可以在后续调用opencv方法时显得简化一些。例如cv::Mat 只要写成 Mat就好了。</li>
 <li>在viewDidLoad()中，我们调用<code>UImageToMat</code>方法转换UIImage对象到<code>cv::Mat</code>对象。但请不要频繁调用这个方法，这样做会消耗内存影响程序性能。<code>UImageToMat</code>和<code>MatToUIImage</code>方法在头文件<opencv2 imgcodecs="" ios.h="">中定义。</opencv2></li>
 <li>在转换完成图像后，使用opencv做了一些简单的图像处理。首先是转换cvImage中的图像到单通道灰度图像。然后使用高斯模糊去除cvGrayImage中微小的边缘；接着使用Canny算法检测cvGrayImage中图像的边缘。为了显示效果，创建了一幅白色背景，边缘像素设置为蓝色的图像。最后调用<code>MatToUIImage</code>将<code>cv::Mat</code>对象转回UIImage并在屏幕上显示。</li>
+<li>在viewDidLoad()中，使用：</li>
 </ol>
-
+<p><code>image = [UIImage imageNamed:@&quot;lena_std.tif&quot;];</code><br>方法加载图片有内存溢出的风险。<br>可以使用如下两句替代：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSString * path = [[NSBundle mainBundle] <span class="string">pathForResource:</span>@<span class="string">"lena_std"</span> <span class="string">ofType:</span>@<span class="string">"tif"</span>];</span><br><span class="line">image = [UIImage <span class="string">imageWithContentsOfFile:</span>path];</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/" data-id="cifl70mfb0014f38edl469t29" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/" data-id="cifl8j7180014my8eugz6rjt9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>

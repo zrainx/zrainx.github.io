@@ -109,12 +109,14 @@
 <li>加入<code>using namespace cv;</code>声明使用opencv的命名域空间。这样可以在后续调用opencv方法时显得简化一些。例如cv::Mat 只要写成 Mat就好了。</li>
 <li>在viewDidLoad()中，我们调用<code>UImageToMat</code>方法转换UIImage对象到<code>cv::Mat</code>对象。但请不要频繁调用这个方法，这样做会消耗内存影响程序性能。<code>UImageToMat</code>和<code>MatToUIImage</code>方法在头文件<opencv2 imgcodecs="" ios.h="">中定义。</opencv2></li>
 <li>在转换完成图像后，使用opencv做了一些简单的图像处理。首先是转换cvImage中的图像到单通道灰度图像。然后使用高斯模糊去除cvGrayImage中微小的边缘；接着使用Canny算法检测cvGrayImage中图像的边缘。为了显示效果，创建了一幅白色背景，边缘像素设置为蓝色的图像。最后调用<code>MatToUIImage</code>将<code>cv::Mat</code>对象转回UIImage并在屏幕上显示。</li>
+<li>在viewDidLoad()中，使用：</li>
 </ol>
-
+<p><code>image = [UIImage imageNamed:@&quot;lena_std.tif&quot;];</code><br>方法加载图片有内存溢出的风险。<br>可以使用如下两句替代：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSString * path = [[NSBundle mainBundle] <span class="string">pathForResource:</span>@<span class="string">"lena_std"</span> <span class="string">ofType:</span>@<span class="string">"tif"</span>];</span><br><span class="line">image = [UIImage <span class="string">imageWithContentsOfFile:</span>path];</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/" data-id="cifl70mfb0014f38edl469t29" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/" data-id="cifl8j7180014my8eugz6rjt9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -192,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" data-id="cifl70mfg0018f38exp89vezb" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" data-id="cifl8j71d0018my8e5n238ifc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -257,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/" data-id="cifl70mfi001cf38ebj44tpj1" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/" data-id="cifl8j71f001cmy8ewt5os35w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -303,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/20/在macos上搭建pyqt环境/" data-id="cifl70meu000ef38ehoem1nix" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/20/在macos上搭建pyqt环境/" data-id="cifl8j70q000emy8ehi7prd0f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -345,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/20/芯芯视频/" data-id="cifl70mej0001f38e83d3064p" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/20/芯芯视频/" data-id="cifl8j70f0001my8eamf83cbl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/女儿/">女儿</a></li></ul>
@@ -453,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" data-id="cifl70mf8000yf38enm8mr6gy" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" data-id="cifl8j713000ymy8e16g7le25" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
@@ -506,7 +508,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="cifl70mez000if38e10cvo169" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="cifl8j70w000imy8ejmdusaue" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
@@ -554,7 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="cifl70mes0009f38exprfg2ib" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="cifl8j70n0009my8eeani78kb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/乒乓球/">乒乓球</a></li></ul>
@@ -600,7 +602,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/芯芯照片/" data-id="cifl70meo0006f38eb1ryiztd" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/芯芯照片/" data-id="cifl8j70k0006my8er81wgjyw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/女儿/">女儿</a></li></ul>
@@ -670,7 +672,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/使用hxo和github搭建blog步骤/" data-id="cifl70mf3000pf38exo6i88lp" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/05/使用hxo和github搭建blog步骤/" data-id="cifl8j70z000pmy8eeni8hue8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hxo/">hxo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建blog/">搭建blog</a></li></ul>
