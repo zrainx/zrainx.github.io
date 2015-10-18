@@ -61,6 +61,73 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-《Instant-OpenCV-for-iOS》-学习笔记-5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/18/《Instant-OpenCV-for-iOS》-学习笔记-5/" class="article-date">
+  <time datetime="2015-10-18T12:06:24.000Z" itemprop="datePublished">2015-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/opencv/">opencv</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/18/《Instant-OpenCV-for-iOS》-学习笔记-5/">《Instant-OpenCV-for-iOS》-学习笔记-5</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="打印明信片">打印明信片</h1><p>本文中我们讨论如何在Objective-C代码中使用C++类。我们创建一个简单的应用程序，使用脸部照片打印出明信片。在本文中我们还学习如何测量程序的运行时间，这样可以在日后优化它。</p>
+<h2 id="准备">准备</h2><p>从例程工程目录中考张图片拖到自己的工程supporting Files中</p>
+<ul>
+<li><img src="http://zrainx.github.io/img/text.png" alt="text.png"></li>
+<li><img src="http://zrainx.github.io/img/texture.jpg" alt="texture.jpg"></li>
+<li><img src="http://zrainx.github.io/img/lena_std.tif" alt="lena_std.tif"><h2 id="步骤">步骤</h2></li>
+</ul>
+<ol>
+<li>使用<a href="http://zrainx.github.io/2015/10/03/%E3%80%8AInstant-OpenCV-for-iOS%E3%80%8B-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3/">《Instant-OpenCV-for-iOS》-学习笔记-3</a>的工程继续开发。</li>
+<li>创建 <code>PostcardPrinter.cpp</code>和<code>PostcardPrinter.hpp</code></li>
+<li><p>在<code>PostcardPrinter.hpp</code>中加入如下代码：</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># <span class="keyword">ifndef</span> PostcardPrinter_hpp</span></span><br><span class="line"><span class="preprocessor"># <span class="keyword">define</span> PostcardPrinter_hpp</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># <span class="keyword">include</span> <span class="string">"opencv2/core/core.hpp"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> PostcardPrinter</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="keyword">struct</span> Images</span><br><span class="line">&#123;</span><br><span class="line">cv::Mat face;</span><br><span class="line">cv::Mat texture;</span><br><span class="line">cv::Mat text;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">PostcardPrinter(Images images);</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(cv::Mat&amp; postcard)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">crumple</span><span class="params">(cv::Mat&amp; image, <span class="keyword">const</span> cv::Mat&amp; texture,</span><br><span class="line"> <span class="keyword">const</span> cv::Mat&amp; mask = cv::Mat()</span>) <span class="keyword">const</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">alphaBlend</span><span class="params">(<span class="keyword">const</span> cv::Mat&amp; src, cv::Mat&amp; dst,</span><br><span class="line"><span class="keyword">const</span> cv::Mat&amp; alpha)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">Images images_;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># <span class="keyword">endif</span> <span class="comment">/* PostcardPrinter_hpp */</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>在<code>PostcardPrinter.cpp</code>中添加如下代码实现在PostcardPrinter类中声明的<code>print</code>、<code>crumple</code>、<code>alphaBlend</code>等方法：</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"PostcardPrinter.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"opencv2/imgproc/imgproc.hpp"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"></span><br><span class="line">PostcardPrinter::PostcardPrinter(Images images)</span><br><span class="line">&#123;</span><br><span class="line">    images_ = images;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> PostcardPrinter::print(Mat&amp; postcard) <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Prepare postcard</span></span><br><span class="line">    <span class="keyword">int</span> border = <span class="number">50</span>;</span><br><span class="line">    <span class="keyword">int</span> bottomBorder = border * <span class="number">4</span>;</span><br><span class="line">    cv::Size postcardSize = cv::Size(images_.face.cols + <span class="number">2</span> * border,</span><br><span class="line">                                     images_.face.rows + border + bottomBorder);</span><br><span class="line">    resize(images_.texture, postcard, postcardSize);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Choose places for face and text</span></span><br><span class="line">    cv::<span class="function">Point <span class="title">shift</span><span class="params">(border, border)</span></span>;</span><br><span class="line">    cv::Rect faceRoi = cv::Rect(shift, images_.face.size());</span><br><span class="line">    Mat placeForFace = postcard(faceRoi);</span><br><span class="line">    cv::<span class="function">Point <span class="title">origin</span><span class="params">(border, images_.face.rows + border)</span></span>;</span><br><span class="line">    cv::<span class="function">Rect <span class="title">textRoi</span><span class="params">(origin + shift, images_.text.size()</span>)</span>;</span><br><span class="line">    Mat placeForText = postcard(textRoi);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Add crumpled face</span></span><br><span class="line">    Mat crumpledFace = images_.face.clone();</span><br><span class="line">    crumple(crumpledFace, placeForFace);</span><br><span class="line">    crumpledFace.copyTo(placeForFace);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Get text's alpha channel</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Mat&gt; textPlanes;</span><br><span class="line">    split(images_.text, textPlanes);</span><br><span class="line">    Mat alpha = textPlanes[<span class="number">3</span>];</span><br><span class="line">    textPlanes.pop_back();</span><br><span class="line">    Mat bgrText;</span><br><span class="line">    merge(textPlanes, bgrText);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Add text with crumpling and alpha</span></span><br><span class="line">    crumple(bgrText, placeForText, alpha);</span><br><span class="line">    alphaBlend(bgrText, placeForText, alpha);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> PostcardPrinter::crumple(Mat&amp; image, <span class="keyword">const</span> Mat&amp; texture,</span><br><span class="line">                              <span class="keyword">const</span> Mat&amp; mask) <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">    Mat relief;</span><br><span class="line">    cvtColor(texture, relief, CV_BGR2GRAY);</span><br><span class="line">    relief = <span class="number">255</span> - relief;</span><br><span class="line">    </span><br><span class="line">    Mat hsvImage;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Mat&gt; planes;</span><br><span class="line">    cvtColor(image, hsvImage, CV_BGR2HSV);</span><br><span class="line">    </span><br><span class="line">    split(hsvImage, planes);</span><br><span class="line">    subtract(planes[<span class="number">2</span>], relief, planes[<span class="number">2</span>], mask);</span><br><span class="line">    merge(planes, hsvImage);</span><br><span class="line">    </span><br><span class="line">    cvtColor(hsvImage, image, CV_HSV2BGR);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> PostcardPrinter::alphaBlend(<span class="keyword">const</span> Mat&amp; src, Mat&amp; dst,</span><br><span class="line">                                 <span class="keyword">const</span> Mat&amp; alpha) <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; src.rows; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; src.cols; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            uchar alpha_value = alpha.at&lt;uchar&gt;(i, j);</span><br><span class="line">            <span class="keyword">if</span> (alpha_value != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">float</span> weight = <span class="keyword">float</span>(alpha_value) / <span class="number">255.f</span>;</span><br><span class="line">                dst.at&lt;Vec3b&gt;(i, j) = weight * src.at&lt;Vec3b&gt;(i, j) +</span><br><span class="line">                (<span class="number">1</span> - weight) * dst.at&lt;Vec3b&gt;(i, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在ViewController.mm中的viewDidLoad方法中添加如下代码：</p>
+ <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"ViewController.h"</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">"PostcardPrinter.hpp"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"><span class="keyword">@synthesize</span> imageView;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></span><br><span class="line">    PostcardPrinter::Images images;</span><br><span class="line">    <span class="built_in">NSString</span>* filePath = [[<span class="built_in">NSBundle</span> mainBundle]</span><br><span class="line">                          pathForResource:<span class="string">@"lena_std"</span> ofType:<span class="string">@"tif"</span>];</span><br><span class="line">    <span class="built_in">UIImage</span>* image = [<span class="built_in">UIImage</span> imageWithContentsOfFile:filePath];</span><br><span class="line">    <span class="built_in">UIImageToMat</span>(image, images<span class="variable">.face</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//<span class="doctag">FIXME:</span> delete this</span></span><br><span class="line">    resize(images<span class="variable">.face</span>, images<span class="variable">.face</span>, cv::Size(<span class="number">512</span>, <span class="number">512</span>));</span><br><span class="line">    </span><br><span class="line">    filePath = [[<span class="built_in">NSBundle</span> mainBundle]</span><br><span class="line">                pathForResource:<span class="string">@"texture"</span> ofType:<span class="string">@"jpg"</span>];</span><br><span class="line">    image = [<span class="built_in">UIImage</span> imageWithContentsOfFile:filePath];</span><br><span class="line">    <span class="built_in">UIImageToMat</span>(image, images<span class="variable">.texture</span>);</span><br><span class="line">    cvtColor(images<span class="variable">.texture</span>, images<span class="variable">.texture</span>, CV_RGBA2RGB);</span><br><span class="line">    </span><br><span class="line">    filePath = [[<span class="built_in">NSBundle</span> mainBundle]</span><br><span class="line">                pathForResource:<span class="string">@"text"</span> ofType:<span class="string">@"png"</span>];</span><br><span class="line">    image = [<span class="built_in">UIImage</span> imageWithContentsOfFile:filePath];</span><br><span class="line">    <span class="built_in">UIImageToMat</span>(image, images<span class="variable">.text</span>, <span class="literal">true</span>);</span><br><span class="line">    </span><br><span class="line">    PostcardPrinter postcardPrinter(images);</span><br><span class="line">    </span><br><span class="line">    cv::Mat postcard;</span><br><span class="line">    int64 timeStart = cv::getTickCount();</span><br><span class="line">    postcardPrinter<span class="variable">.print</span>(postcard);</span><br><span class="line">    int64 timeEnd = cv::getTickCount();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">float</span> durationMs =</span><br><span class="line">    <span class="number">1000.</span>f * <span class="keyword">float</span>(timeEnd - timeStart) / cv::getTickFrequency();</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Printing time = %.3fms"</span>, durationMs);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (!postcard<span class="variable">.empty</span>())</span><br><span class="line">        imageView<span class="variable">.image</span> = MatTo<span class="built_in">UIImage</span>(postcard);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)didReceiveMemoryWarning &#123;</span><br><span class="line">    [<span class="keyword">super</span> didReceiveMemoryWarning];</span><br><span class="line">    <span class="comment">// Dispose of any resources that can be recreated.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>CMD+R 得到效果如下图：<br><img src="http://zrainx.github.io/img/2015-10-18-0.25.21.jpg" alt="2015-10-18-0.25.21.jpg"></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zrainx.github.io/2015/10/18/《Instant-OpenCV-for-iOS》-学习笔记-5/" data-id="cifwlyiyk0014f38ektt73vfb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-《Instant-OpenCV-for-iOS》-学习笔记-4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/14/《Instant-OpenCV-for-iOS》-学习笔记-4/" class="article-date">
@@ -116,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/14/《Instant-OpenCV-for-iOS》-学习笔记-4/" data-id="cifr05bqj0014ht8eer2cnbme" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/14/《Instant-OpenCV-for-iOS》-学习笔记-4/" data-id="cifwlyiyq0018f38eddi2x57x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -183,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/" data-id="cifr05bqo0018ht8efmns9dsc" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/" data-id="cifwlyiys001cf38ev70w55lb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -261,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" data-id="cifr05bqq001cht8e2gi9xplb" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" data-id="cifwlyiyv001gf38e64n6z8wu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -326,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/" data-id="cifr05bqs001ght8ewqitqno2" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/" data-id="cifwlyiyy001kf38epjsag3c0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -372,7 +439,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/20/在macos上搭建pyqt环境/" data-id="cifr05bq1000eht8ewmylj9bg" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/20/在macos上搭建pyqt环境/" data-id="cifwlyixy000ef38eis5md3w5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -414,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/20/芯芯视频/" data-id="cifr05bpr0001ht8ec7oyi9fx" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/20/芯芯视频/" data-id="cifwlyixp0001f38e57de24ip" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/女儿/">女儿</a></li></ul>
@@ -522,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" data-id="cifr05bqg000yht8e0c9qy0bf" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" data-id="cifwlyiyg000yf38e33pq6rew" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
@@ -575,7 +642,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="cifr05bq7000iht8eacomicwp" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="cifwlyiy5000if38exp1iikde" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
@@ -623,56 +690,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="cifr05bpz0009ht8ex6plyscr" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="cifwlyixw0009f38efbpu3jpo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/乒乓球/">乒乓球</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-芯芯照片" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/09/05/芯芯照片/" class="article-date">
-  <time datetime="2015-09-05T10:17:53.000Z" itemprop="datePublished">2015-09-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/照片/">照片</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/05/芯芯照片/">芯芯</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>芯芯的照片</strong></p>
-<p><img src="http://zrainx.github.io/img/IMG_20150808_131626.jpg" alt="IMG_20150808_131626.jpg"></p>
-<p><strong>视频</strong><br><a href="http://pan.baidu.com/play/video#video/path=%2F%E6%9D%A5%E8%87%AA%EF%BC%9APE-CL00%2FDCIM%2FCamera%2FVID_20150920_134441.mp4&amp;t=-1" target="_blank" rel="external">9月20日1</a></p>
-<p><a href="http://pan.baidu.com/s/1dDfj5aL" target="_blank" rel="external">9月20日2</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/05/芯芯照片/" data-id="cifr05bpx0006ht8eag8y5q7w" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/女儿/">女儿</a></li></ul>
 
     </footer>
   </div>
@@ -694,7 +715,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ios/">ios</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/乒乓球/">乒乓球</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日志/">日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/照片/">照片</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ios/">ios</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/乒乓球/">乒乓球</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日志/">日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/照片/">照片</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -703,7 +724,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hxo/">hxo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcode/">xcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乒乓球/">乒乓球</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/女儿/">女儿</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建blog/">搭建blog</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hxo/">hxo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcode/">xcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乒乓球/">乒乓球</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/女儿/">女儿</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建blog/">搭建blog</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -721,7 +742,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -731,6 +752,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/10/18/《Instant-OpenCV-for-iOS》-学习笔记-5/">《Instant-OpenCV-for-iOS》-学习笔记-5</a>
+          </li>
         
           <li>
             <a href="/2015/10/14/《Instant-OpenCV-for-iOS》-学习笔记-4/">《Instant-OpenCV-for-iOS》-学习笔记-4</a>
@@ -746,10 +771,6 @@
         
           <li>
             <a href="/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/">《Instant OpenCV for iOS》 学习笔记（1）</a>
-          </li>
-        
-          <li>
-            <a href="/2015/09/20/在macos上搭建pyqt环境/">在macos上搭建pyqt环境</a>
           </li>
         
       </ul>
