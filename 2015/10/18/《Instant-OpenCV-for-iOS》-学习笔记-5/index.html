@@ -31,7 +31,7 @@ lena_std.tif步骤
 <meta property="og:image" content="http://zrainx.github.io/img/texture.jpg">
 <meta property="og:image" content="http://zrainx.github.io/img/lena_std.tif">
 <meta property="og:image" content="http://zrainx.github.io/img/2015-10-18-0.25.21.jpg">
-<meta property="og:updated_time" content="2015-10-21T15:57:56.000Z">
+<meta property="og:updated_time" content="2015-10-26T15:13:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Instant-OpenCV-for-iOS》-学习笔记-5">
 <meta name="twitter:description" content="打印明信片本文中我们讨论如何在Objective-C代码中使用C++类。我们创建一个简单的应用程序，使用脸部照片打印出明信片。在本文中我们还学习如何测量程序的运行时间，这样可以在日后优化它。
@@ -141,14 +141,17 @@ lena_std.tif步骤
 </ol>
 <p>##解释</p>
 <ol>
-<li><code>PostcardPrinter</code> 是一个C＋＋类。其中<code>crumpling</code> 是用于改变图像的强度值（<code>intensity</code>）。首先我们先要把图像转化到HSV空间。</li>
-<li><code>OpenCV中有getTickCount</code> 和 <code>getTickFrequency</code>函数用于测量时间。<br><code>float(timeEnd - timeStart) / cv::getTickFrequency();</code></li>
+<li><code>PostcardPrinter</code> 是一个可以用在桌面程序的C＋＋类，他简单调用了一些OpenCv函数。其中<code>crumpling</code> 方法是用于改变图像的强度值（<code>intensity</code>），而这些操作都需要在HSV色彩空间中完成。首先将texture图像转为灰度图存入relief，然后用image的强度通道值（HSV的value通道）减去relief。</li>
+<li><code>UIImageToMat(image, params.text, true);</code>表示转换成带alpha通道的Mat。</li>
+<li><code>OpenCV中有getTickCount</code> 和 <code>getTickFrequency</code>函数用于测量时间，评估软件性能。乘上1000后的时间单位是毫秒ms<br><code>1000.f * float(timeEnd - timeStart) / cv::getTickFrequency();</code></li>
+<li>时间的差值要控制在0.5秒内。一般不直接使用<code>getTickCount</code>函数，而是使用宏：<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hexcolor">#def</span>ine <span class="function"><span class="title">TS</span><span class="params">(name)</span></span> int64 t_#<span class="id">#name</span> = cv::<span class="function"><span class="title">getTickCount</span><span class="params">()</span></span>     <span class="hexcolor">#def</span>ine <span class="function"><span class="title">TE</span><span class="params">(name)</span></span> printf(<span class="string">"TIMER_"</span> <span class="id">#name</span> <span class="string">": %.2fms\n"</span>, \       <span class="number">1000</span>.*((cv::<span class="function"><span class="title">getTickCount</span><span class="params">()</span></span> - t_##name) / cv::<span class="function"><span class="title">getTickFrequency</span><span class="params">()</span></span>))</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/18/《Instant-OpenCV-for-iOS》-学习笔记-5/" data-id="cig81w8530014d38e12ap2uny" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/18/《Instant-OpenCV-for-iOS》-学习笔记-5/" data-id="cig833hog0014e68edzhtvblu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>

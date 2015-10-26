@@ -114,14 +114,17 @@
 </ol>
 <p>##解释</p>
 <ol>
-<li><code>PostcardPrinter</code> 是一个C＋＋类。其中<code>crumpling</code> 是用于改变图像的强度值（<code>intensity</code>）。首先我们先要把图像转化到HSV空间。</li>
-<li><code>OpenCV中有getTickCount</code> 和 <code>getTickFrequency</code>函数用于测量时间。<br><code>float(timeEnd - timeStart) / cv::getTickFrequency();</code></li>
+<li><code>PostcardPrinter</code> 是一个可以用在桌面程序的C＋＋类，他简单调用了一些OpenCv函数。其中<code>crumpling</code> 方法是用于改变图像的强度值（<code>intensity</code>），而这些操作都需要在HSV色彩空间中完成。首先将texture图像转为灰度图存入relief，然后用image的强度通道值（HSV的value通道）减去relief。</li>
+<li><code>UIImageToMat(image, params.text, true);</code>表示转换成带alpha通道的Mat。</li>
+<li><code>OpenCV中有getTickCount</code> 和 <code>getTickFrequency</code>函数用于测量时间，评估软件性能。乘上1000后的时间单位是毫秒ms<br><code>1000.f * float(timeEnd - timeStart) / cv::getTickFrequency();</code></li>
+<li>时间的差值要控制在0.5秒内。一般不直接使用<code>getTickCount</code>函数，而是使用宏：<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hexcolor">#def</span>ine <span class="function"><span class="title">TS</span><span class="params">(name)</span></span> int64 t_#<span class="id">#name</span> = cv::<span class="function"><span class="title">getTickCount</span><span class="params">()</span></span>     <span class="hexcolor">#def</span>ine <span class="function"><span class="title">TE</span><span class="params">(name)</span></span> printf(<span class="string">"TIMER_"</span> <span class="id">#name</span> <span class="string">": %.2fms\n"</span>, \       <span class="number">1000</span>.*((cv::<span class="function"><span class="title">getTickCount</span><span class="params">()</span></span> - t_##name) / cv::<span class="function"><span class="title">getTickFrequency</span><span class="params">()</span></span>))</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/18/《Instant-OpenCV-for-iOS》-学习笔记-5/" data-id="cig81w8530014d38e12ap2uny" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/18/《Instant-OpenCV-for-iOS》-学习笔记-5/" data-id="cig833hog0014e68edzhtvblu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -188,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/14/《Instant-OpenCV-for-iOS》-学习笔记-4/" data-id="cig81w8580018d38ezxpgtfbn" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/14/《Instant-OpenCV-for-iOS》-学习笔记-4/" data-id="cig833hok0018e68e0swmjgyw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -255,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/" data-id="cig81w85a001cd38elb8ztu1c" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-3/" data-id="cig833hom001ce68evett078v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -333,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" data-id="cig81w85c001gd38e9tq6k14p" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant-OpenCV-for-iOS》-学习笔记-2/" data-id="cig833hoq001ge68eoroeg1cw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -398,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/" data-id="cig81w85f001kd38ehcxzjywj" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/03/《Instant OpenCV for iOS》 学习笔记(1)/" data-id="cig833hos001ke68etvci0ck1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -444,7 +447,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/20/在macos上搭建pyqt环境/" data-id="cig81w84i000ed38eeqwlex5s" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/20/在macos上搭建pyqt环境/" data-id="cig833hnx000ee68eie89zcmv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -486,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/20/芯芯视频/" data-id="cig81w8480001d38e8e334lpj" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/20/芯芯视频/" data-id="cig833hno0001e68egbe52awj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/女儿/">女儿</a></li></ul>
@@ -594,7 +597,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" data-id="cig81w84x000yd38eojy5ddxp" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/19/使用Xcode7免费真机调试iOS应用程序/" data-id="cig833hob000ye68e0mlqyfrf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
@@ -647,7 +650,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="cig81w84o000id38e1l2hnh9g" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/14/在XCode中使用OpenCV/" data-id="cig833ho3000ie68ercvtdl37" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
@@ -695,7 +698,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="cig81w84f0009d38e35b1nbe9" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/09/13/正手弧圈-手腕外展/" data-id="cig833hnv0009e68ermv88dqc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/乒乓球/">乒乓球</a></li></ul>
