@@ -31,7 +31,7 @@ lena_std.tif步骤
 <meta property="og:image" content="http://zrainx.github.io/img/texture.jpg">
 <meta property="og:image" content="http://zrainx.github.io/img/lena_std.tif">
 <meta property="og:image" content="http://zrainx.github.io/img/2015-10-18-0.25.21.jpg">
-<meta property="og:updated_time" content="2015-10-18T14:32:41.000Z">
+<meta property="og:updated_time" content="2015-10-21T15:57:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Instant-OpenCV-for-iOS》-学习笔记-5">
 <meta name="twitter:description" content="打印明信片本文中我们讨论如何在Objective-C代码中使用C++类。我们创建一个简单的应用程序，使用脸部照片打印出明信片。在本文中我们还学习如何测量程序的运行时间，这样可以在日后优化它。
@@ -139,11 +139,16 @@ lena_std.tif步骤
 <ol>
 <li>CMD+R 得到效果如下图：<br><img src="http://zrainx.github.io/img/2015-10-18-0.25.21.jpg" alt="2015-10-18-0.25.21.jpg"></li>
 </ol>
+<p>##解释</p>
+<ol>
+<li><code>PostcardPrinter</code> 是一个C＋＋类。其中<code>crumpling</code> 是用于改变图像的强度值（<code>intensity</code>）。首先我们先要把图像转化到HSV空间。</li>
+<li><code>OpenCV中有getTickCount</code> 和 <code>getTickFrequency</code>函数用于测量时间。<br><code>float(timeEnd - timeStart) / cv::getTickFrequency();</code></li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zrainx.github.io/2015/10/18/《Instant-OpenCV-for-iOS》-学习笔记-5/" data-id="cifwm4nq00014g18ei0mnaltl" class="article-share-link">Share</a>
+      <a data-url="http://zrainx.github.io/2015/10/18/《Instant-OpenCV-for-iOS》-学习笔记-5/" data-id="cig81w8530014d38e12ap2uny" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
